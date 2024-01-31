@@ -11,14 +11,14 @@ import org.springframework.stereotype.Controller;
 public class ChatController {
 
     // (1) access endpoint "chat-sendMessage" (2) when sending message it'll send to "chatroom/public"
-    @MessageMapping("chat-sendMessage")
-    @SendTo("chatroom/public")
+    @MessageMapping("/chat.sendMessage")
+    @SendTo("/chatroom/public")
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
         return chatMessage;
     }
 
-    @MessageMapping("chat-addUser")
-    @SendTo("chatroom/public")
+    @MessageMapping("/chat.addUser")
+    @SendTo("/chatroom/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
 
         // add username from websocket session to sender
