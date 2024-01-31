@@ -118,6 +118,16 @@ function onMessageReceived(payload) {
     messageArea.scrollTop = messageArea.scrollHeight;
 }
 
+function getAvatarColor(messageSender) {
+    var hash = 0;
+    for (var i = 0; i < messageSender.length; i++) {
+        hash = 31 * hash + messageSender.charCodeAt(i);
+    }
+
+//    determine the index based on predefined colors
+    var index = Math.abs(hash % colors.length);
+    return colors[index];
+}
 
 // event listener when user click submit for Websocket connection + sendMessage
 usernameForm.addEventListener('submit', connect, true)
