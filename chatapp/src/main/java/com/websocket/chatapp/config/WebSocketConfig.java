@@ -12,15 +12,15 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
 //        endpoint to enter websocket
-        registry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS();
+        registry.addEndpoint("/ws").withSockJS();
     }
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.setApplicationDestinationPrefixes("/app");
 
-//        client can subscribe to messages from public chatroom or private message from user
-        registry.enableSimpleBroker("/chatroom", "/user");
+//        client can subscribe to messages from public chatroom
+        registry.enableSimpleBroker("/chatroom");
 
     }
 }
